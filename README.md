@@ -1,4 +1,4 @@
-# Optimal Kernel Orchestration for Tensor Programs with Korch ([paper](https://dl.acm.org/doi/abs/10.1145/3620666.3651383))
+# Optimal Kernel Orchestration for Tensor Programs with Korch ([paper](https://arxiv.org/abs/2406.09465))
 
 Kernel orchestration is the task of mapping DNN operator computation to hardware accelerator kernels. Korch is a tensor program optimizer that discovers optimal kernel orchestration strategies for tensor programs, by first applying operator fission to decompose tensor operators into a small set of basic tensor algebra primitives, then formalizing kernel orchestration as an ILP (Integer Linear Programming) problem. Korch outperforms existing tensor compilers by up to 1.7x.
 
