@@ -1,4 +1,3 @@
-#%%
 import onnx
 import numpy as np
 import onnx_graphsurgeon as OGS
@@ -7,6 +6,7 @@ from onnx import shape_inference
 import copy
 
 import os
+import sys
 
 from google.protobuf.json_format import MessageToDict
 
@@ -746,3 +746,16 @@ def perform_op_fission(graph: onnx.ModelProto):
     fission_graph = parse_graph(graph_si)
     
     return fission_graph
+    
+
+if __name__=="__main__":
+        
+    onnx_model = onnx.load(sys.argv[1])
+
+    shape_dict, input_name, input_shape, DTYPE = get_input_node_info(onnx_model)
+    
+    fission_testcase_onnx = perform_op_fission(onnx_model)
+    
+    GS_model = OGS.import_onnx(fission_testcase_onnx)
+    
+    onnx.save(fission_testcase_onnx, sys.argv[2])
